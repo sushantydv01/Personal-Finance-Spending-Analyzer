@@ -1,4 +1,4 @@
-from dash import Dash, html
+from dash import Dash, html  # pyrefly: ignore [missing-import]
 
 app = Dash(__name__)
 

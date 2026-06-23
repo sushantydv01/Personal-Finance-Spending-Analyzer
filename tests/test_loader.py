@@ -1,7 +1,7 @@
 import unittest
 import os
 import tempfile
-import pandas as pd
+import pandas as pd  # pyrefly: ignore [missing-import]
 from utils.data_loader import load_data
 
 class TestDataLoader(unittest.TestCase):
