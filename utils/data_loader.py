@@ -1,5 +1,5 @@
 import os
-from typing import Union
+from typing import Union, Optional
 import pandas as pd  # pyrefly: ignore [missing-import]
 
 def load_data(file_path: str) -> pd.DataFrame:
@@ -149,7 +149,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     return cleaned_df
 
 
-def categorize_transaction(description: str) -> str:
+def categorize_transaction(description: Optional[str]) -> str:
     """
     Classifies a transaction description into a category using keyword matching.
     
@@ -233,10 +233,11 @@ def add_derived_columns(df: pd.DataFrame) -> pd.DataFrame:
     df_derived = df.copy()
     
     # Extract date parts using capitalized names
-    df_derived['Month'] = df_derived['Date'].dt.month
-    df_derived['Weekday'] = df_derived['Date'].dt.day_name()
-    df_derived['Day'] = df_derived['Date'].dt.day
-    df_derived['Year'] = df_derived['Date'].dt.year
+    df_derived['Month'] = df_derived['Date'].dt.month  # type: ignore
+    df_derived['Weekday'] = df_derived['Date'].dt.day_name()  # type: ignore
+    df_derived['Day'] = df_derived['Date'].dt.day  # type: ignore
+    df_derived['Year'] = df_derived['Date'].dt.year  # type: ignore
+
     
     # Calculate derived logical and magnitude indicators
     df_derived['IsExpense'] = df_derived['Amount'] < 0
