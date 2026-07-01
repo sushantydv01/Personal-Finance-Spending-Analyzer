@@ -1,8 +1,50 @@
 /* Custom styling for Finance Analyzer UI / reports */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f172a; /* Slate 900 */
-    color: #f8fafc; /* Slate 50 */
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* We rely on the dbc.themes.DARKLY for the main background, but set a fallback */
+    background-color: #222222; 
     margin: 0;
     padding: 0;
+}
+
+/* Make cards pop a bit more in the dark theme */
+.card {
+    border-radius: 8px !important;
+    border: 1px solid #444 !important;
+    background-color: #2b2b2b !important;
+}
+
+/* Upload component hover effect */
+.dash-upload {
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dash-upload:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+/* 
+ * FIX FOR DCC.DROPDOWN IN DARK THEME: 
+ * The default dash-core-components dropdown text is light on light background 
+ * when using dark themes. We need to force dark text so it's readable.
+ */
+.Select-value-label,
+.Select-placeholder {
+    color: #333333 !important;
+}
+
+.Select-menu-outer {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}
+
+/* 
+ * FIX FOR DCC.DATEPICKERRANGE IN DARK THEME:
+ * Ensure input text is dark.
+ */
+.DateInput_input {
+    color: #333333 !important;
+    background-color: #ffffff !important;
 }
